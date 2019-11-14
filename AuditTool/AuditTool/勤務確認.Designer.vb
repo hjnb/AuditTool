@@ -31,8 +31,8 @@ Partial Class 勤務確認
         Me.btnClearName = New System.Windows.Forms.Button()
         Me.btnPlus7 = New System.Windows.Forms.Button()
         Me.btnPlus7All = New System.Windows.Forms.Button()
-        Me.dgvWork = New AuditTool.ExDataGridView(Me.components)
         Me.btnPrint = New System.Windows.Forms.Button()
+        Me.dgvWork = New AuditTool.ExDataGridView(Me.components)
         CType(Me.dgvWork, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -50,7 +50,7 @@ Partial Class 勤務確認
         '
         Me.btnRead.Location = New System.Drawing.Point(167, 9)
         Me.btnRead.Name = "btnRead"
-        Me.btnRead.Size = New System.Drawing.Size(126, 29)
+        Me.btnRead.Size = New System.Drawing.Size(126, 26)
         Me.btnRead.TabIndex = 2
         Me.btnRead.Text = "アレンジから勤務読込"
         Me.btnRead.UseVisualStyleBackColor = True
@@ -75,7 +75,7 @@ Partial Class 勤務確認
         '
         'btnClearDate
         '
-        Me.btnClearDate.Location = New System.Drawing.Point(508, 9)
+        Me.btnClearDate.Location = New System.Drawing.Point(501, 9)
         Me.btnClearDate.Name = "btnClearDate"
         Me.btnClearDate.Size = New System.Drawing.Size(75, 26)
         Me.btnClearDate.TabIndex = 6
@@ -84,7 +84,7 @@ Partial Class 勤務確認
         '
         'btnClearName
         '
-        Me.btnClearName.Location = New System.Drawing.Point(333, 9)
+        Me.btnClearName.Location = New System.Drawing.Point(340, 9)
         Me.btnClearName.Name = "btnClearName"
         Me.btnClearName.Size = New System.Drawing.Size(75, 26)
         Me.btnClearName.TabIndex = 7
@@ -93,7 +93,7 @@ Partial Class 勤務確認
         '
         'btnPlus7
         '
-        Me.btnPlus7.Location = New System.Drawing.Point(654, 10)
+        Me.btnPlus7.Location = New System.Drawing.Point(659, 10)
         Me.btnPlus7.Name = "btnPlus7"
         Me.btnPlus7.Size = New System.Drawing.Size(110, 26)
         Me.btnPlus7.TabIndex = 8
@@ -109,15 +109,6 @@ Partial Class 勤務確認
         Me.btnPlus7All.Text = "右上の日付から＋7ずつ全部に"
         Me.btnPlus7All.UseVisualStyleBackColor = True
         '
-        'dgvWork
-        '
-        Me.dgvWork.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvWork.Location = New System.Drawing.Point(167, 45)
-        Me.dgvWork.Name = "dgvWork"
-        Me.dgvWork.RowTemplate.Height = 21
-        Me.dgvWork.Size = New System.Drawing.Size(1057, 323)
-        Me.dgvWork.TabIndex = 4
-        '
         'btnPrint
         '
         Me.btnPrint.Location = New System.Drawing.Point(1149, 9)
@@ -126,6 +117,16 @@ Partial Class 勤務確認
         Me.btnPrint.TabIndex = 10
         Me.btnPrint.Text = "印刷"
         Me.btnPrint.UseVisualStyleBackColor = True
+        Me.btnPrint.Visible = False
+        '
+        'dgvWork
+        '
+        Me.dgvWork.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvWork.Location = New System.Drawing.Point(167, 45)
+        Me.dgvWork.Name = "dgvWork"
+        Me.dgvWork.RowTemplate.Height = 21
+        Me.dgvWork.Size = New System.Drawing.Size(1057, 323)
+        Me.dgvWork.TabIndex = 4
         '
         '勤務確認
         '

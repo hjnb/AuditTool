@@ -19,8 +19,17 @@
     Public dbPersonFilePath As String = Util.getIniString("System", "PersonDir", iniFilePath) & "\Person.mdb"
     Public DB_Person As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & dbPersonFilePath
 
+    'Work2のデータベースパス
+    Public dbWork2FilePath As String = Util.getIniString("System", "Work2Dir", iniFilePath) & "\Work2.mdb"
+    Public DB_Work2 As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & dbWork2FilePath
+
+    'Diaryのデータベースパス
+    Public dbDiaryFilePath As String = Util.getIniString("System", "DiaryDir", iniFilePath) & "\Diary.mdb"
+    Public DB_Diary As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & dbDiaryFilePath
+
     '各フォーム
     Private checkWorkForm As 勤務確認
+    Private checkRecordForm As 看護記録関係
 
     ''' <summary>
     ''' コンストラクタ
@@ -69,6 +78,16 @@
             Me.Close()
             Exit Sub
         End If
+        If Not System.IO.File.Exists(dbWork2FilePath) Then
+            MsgBox("Work2データベースファイルが存在しません。" & Environment.NewLine & "iniファイルのWork2Dirに適切なパスを設定して下さい。", MsgBoxStyle.Exclamation)
+            Me.Close()
+            Exit Sub
+        End If
+        If Not System.IO.File.Exists(dbDiaryFilePath) Then
+            MsgBox("Diaryデータベースファイルが存在しません。" & Environment.NewLine & "iniファイルのDiaryDirに適切なパスを設定して下さい。", MsgBoxStyle.Exclamation)
+            Me.Close()
+            Exit Sub
+        End If
     End Sub
 
     ''' <summary>
@@ -82,6 +101,20 @@
             checkWorkForm = New 勤務確認()
             checkWorkForm.Owner = Me
             checkWorkForm.Show()
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' 看護記録関係ボタンクリックイベント
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub btnRecord_Click(sender As System.Object, e As System.EventArgs) Handles btnRecord.Click
+        If IsNothing(checkRecordForm) OrElse checkRecordForm.IsDisposed Then
+            checkRecordForm = New 看護記録関係()
+            checkRecordForm.Owner = Me
+            checkRecordForm.Show()
         End If
     End Sub
 End Class

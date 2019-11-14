@@ -61,6 +61,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="ymdBox">
+      <HintPath>\\primergytx100s1\Hakojun\事務\さかもと\Visual Studio 2010\Projects\ymdBox\ymdBox\ymdBox\bin\Release\ymdBox.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -115,6 +118,12 @@
     <Compile Include="勤務確認.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="看護記録関係.Designer.vb">
+      <DependentUpon>看護記録関係.vb</DependentUpon>
+    </Compile>
+    <Compile Include="看護記録関係.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -128,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="勤務確認.resx">
       <DependentUpon>勤務確認.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="看護記録関係.resx">
+      <DependentUpon>看護記録関係.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

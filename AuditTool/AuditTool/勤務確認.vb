@@ -3,7 +3,7 @@
     '編集不可セルスタイル
     Private disableCellStyle As DataGridViewCellStyle
 
-    Private colorDic As New Dictionary(Of String, Color) From {{"全日", Color.FromKnownColor(KnownColor.Info)}, {"深夜", Color.FromArgb(255, 128, 128)}, {"準夜", Color.FromArgb(255, 128, 255)}, {"后半", Color.FromArgb(128, 255, 255)}, {"前半", Color.FromArgb(255, 255, 128)}, {"早出", Color.FromArgb(128, 255, 128)}, {"遅出", Color.FromArgb(192, 192, 0)}}
+    Private colorDic As New Dictionary(Of String, Color) From {{"全日", Color.FromKnownColor(KnownColor.Info)}, {"深夜", Color.FromArgb(255, 128, 128)}, {"準夜", Color.FromArgb(255, 128, 255)}, {"后半", Color.FromArgb(128, 255, 255)}, {"前半", Color.FromArgb(255, 255, 128)}, {"早出", Color.FromArgb(128, 255, 128)}, {"遅出", Color.FromArgb(192, 192, 0)}, {"日直", Color.FromArgb(255, 128, 0)}, {"当直", Color.FromArgb(128, 128, 255)}}
 
     ''' <summary>
     ''' コンストラクタ
