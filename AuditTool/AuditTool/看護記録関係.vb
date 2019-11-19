@@ -375,9 +375,9 @@
 
             'H31.3月以前は非表示
             If ym <= "2019/03" Then
-                btnChange.Visible = False
+                changePanel.Visible = False
             Else
-                btnChange.Visible = False
+                changePanel.Visible = False
             End If
         End If
     End Sub
@@ -389,6 +389,11 @@
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub btnChange_Click(sender As System.Object, e As System.EventArgs) Handles btnChange.Click
+        If Not chkJyun.Checked AndAlso Not chkNiti.Checked AndAlso Not chkSin.Checked Then
+            MsgBox("時間帯「深夜、検温、準夜」いずれかにチェックを入れて下さい。", MsgBoxStyle.Exclamation)
+            Return
+        End If
+
         If rbtnPersonal.Checked Then
             If codBox.Text = "" Then
                 MsgBox("患者ｺｰﾄﾞが空です。入力して下さい。", MsgBoxStyle.Exclamation)
@@ -480,7 +485,7 @@
     End Sub
 
     ''' <summary>
-    ''' 修正対象ラジオボタン
+    ''' 対象患者ラジオボタン
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>

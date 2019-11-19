@@ -27,7 +27,7 @@ Partial Class TopForm
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnReadWork = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnRecord
@@ -45,7 +45,7 @@ Partial Class TopForm
         Me.btnCheckWork.Name = "btnCheckWork"
         Me.btnCheckWork.Size = New System.Drawing.Size(106, 42)
         Me.btnCheckWork.TabIndex = 1
-        Me.btnCheckWork.Text = "勤務確認"
+        Me.btnCheckWork.Text = "指定して勤務確認"
         Me.btnCheckWork.UseVisualStyleBackColor = True
         '
         'Button1
@@ -72,20 +72,21 @@ Partial Class TopForm
         Me.Button3.TabIndex = 4
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnReadWork
         '
-        Me.Button4.Location = New System.Drawing.Point(166, 185)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(106, 42)
-        Me.Button4.TabIndex = 5
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnReadWork.Location = New System.Drawing.Point(166, 185)
+        Me.btnReadWork.Name = "btnReadWork"
+        Me.btnReadWork.Size = New System.Drawing.Size(106, 42)
+        Me.btnReadWork.TabIndex = 5
+        Me.btnReadWork.Text = "閲覧用勤務表"
+        Me.btnReadWork.UseVisualStyleBackColor = True
         '
         'TopForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(294, 264)
-        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.btnReadWork)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -101,6 +102,6 @@ Partial Class TopForm
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents btnReadWork As System.Windows.Forms.Button
 
 End Class

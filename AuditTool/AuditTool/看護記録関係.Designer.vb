@@ -36,10 +36,16 @@ Partial Class 看護記録関係
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.rbtnSanato = New System.Windows.Forms.RadioButton()
         Me.rbtnNurse = New System.Windows.Forms.RadioButton()
+        Me.changePanel = New System.Windows.Forms.Panel()
+        Me.chkSin = New System.Windows.Forms.CheckBox()
+        Me.chkNiti = New System.Windows.Forms.CheckBox()
+        Me.chkJyun = New System.Windows.Forms.CheckBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.codPanel.SuspendLayout()
         CType(Me.dgvSign, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.changePanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'codPanel
@@ -87,7 +93,7 @@ Partial Class 看護記録関係
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(53, 12)
         Me.Label1.TabIndex = 13
-        Me.Label1.Text = "修正対象"
+        Me.Label1.Text = "対象患者"
         '
         'rbtnPersonal
         '
@@ -113,7 +119,7 @@ Partial Class 看護記録関係
         '
         'btnChange
         '
-        Me.btnChange.Location = New System.Drawing.Point(239, 63)
+        Me.btnChange.Location = New System.Drawing.Point(33, 51)
         Me.btnChange.Name = "btnChange"
         Me.btnChange.Size = New System.Drawing.Size(134, 35)
         Me.btnChange.TabIndex = 10
@@ -183,17 +189,69 @@ Partial Class 看護記録関係
         Me.rbtnNurse.Text = "一般病棟"
         Me.rbtnNurse.UseVisualStyleBackColor = True
         '
+        'changePanel
+        '
+        Me.changePanel.Controls.Add(Me.Label3)
+        Me.changePanel.Controls.Add(Me.chkJyun)
+        Me.changePanel.Controls.Add(Me.chkNiti)
+        Me.changePanel.Controls.Add(Me.chkSin)
+        Me.changePanel.Controls.Add(Me.btnChange)
+        Me.changePanel.Location = New System.Drawing.Point(202, 12)
+        Me.changePanel.Name = "changePanel"
+        Me.changePanel.Size = New System.Drawing.Size(200, 92)
+        Me.changePanel.TabIndex = 18
+        '
+        'chkSin
+        '
+        Me.chkSin.AutoSize = True
+        Me.chkSin.Location = New System.Drawing.Point(19, 30)
+        Me.chkSin.Name = "chkSin"
+        Me.chkSin.Size = New System.Drawing.Size(48, 16)
+        Me.chkSin.TabIndex = 11
+        Me.chkSin.Text = "深夜"
+        Me.chkSin.UseVisualStyleBackColor = True
+        '
+        'chkNiti
+        '
+        Me.chkNiti.AutoSize = True
+        Me.chkNiti.Location = New System.Drawing.Point(76, 30)
+        Me.chkNiti.Name = "chkNiti"
+        Me.chkNiti.Size = New System.Drawing.Size(48, 16)
+        Me.chkNiti.TabIndex = 19
+        Me.chkNiti.Text = "検温"
+        Me.chkNiti.UseVisualStyleBackColor = True
+        '
+        'chkJyun
+        '
+        Me.chkJyun.AutoSize = True
+        Me.chkJyun.Location = New System.Drawing.Point(133, 30)
+        Me.chkJyun.Name = "chkJyun"
+        Me.chkJyun.Size = New System.Drawing.Size(48, 16)
+        Me.chkJyun.TabIndex = 20
+        Me.chkJyun.Text = "準夜"
+        Me.chkJyun.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.ForeColor = System.Drawing.Color.Blue
+        Me.Label3.Location = New System.Drawing.Point(17, 11)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(65, 12)
+        Me.Label3.TabIndex = 19
+        Me.Label3.Text = "対象時間帯"
+        '
         '看護記録関係
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(698, 707)
+        Me.Controls.Add(Me.changePanel)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ymBox)
         Me.Controls.Add(Me.codPanel)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.btnChange)
         Me.Controls.Add(Me.dgvSign)
         Me.Name = "看護記録関係"
         Me.Text = "看護記録関係"
@@ -204,6 +262,8 @@ Partial Class 看護記録関係
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        Me.changePanel.ResumeLayout(False)
+        Me.changePanel.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -222,4 +282,9 @@ Partial Class 看護記録関係
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents rbtnSanato As System.Windows.Forms.RadioButton
     Friend WithEvents rbtnNurse As System.Windows.Forms.RadioButton
+    Friend WithEvents changePanel As System.Windows.Forms.Panel
+    Friend WithEvents chkSin As System.Windows.Forms.CheckBox
+    Friend WithEvents chkJyun As System.Windows.Forms.CheckBox
+    Friend WithEvents chkNiti As System.Windows.Forms.CheckBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 End Class

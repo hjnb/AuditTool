@@ -101,6 +101,20 @@ AuditTool
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
+</member><member name="M:AuditTool.WorkDataGridView.ExDataGridView_CellPainting(System.Object,System.Windows.Forms.DataGridViewCellPaintingEventArgs)">
+	<summary>
+ CellPaintingイベント
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.WorkDataGridView.workDataGridView_ColumnHeaderMouseClick(System.Object,System.Windows.Forms.DataGridViewCellMouseEventArgs)">
+	<summary>
+ 列ヘッダーマウスクリックイベント
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
 </member><member name="M:AuditTool.ExDataGridView.ExDataGridView_CellEnter(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
 	<summary>
  セルエンターイベント
@@ -193,6 +207,13 @@ AuditTool
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
+</member><member name="M:AuditTool.TopForm.btnReadWork_Click(System.Object,System.EventArgs)">
+	<summary>
+ 閲覧用勤務ボタンクリックイベント
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
 </member><member name="P:AuditTool.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
@@ -262,7 +283,7 @@ AuditTool
 	<remarks></remarks>
 </member><member name="M:AuditTool.看護記録関係.rbtnPersonal_CheckedChanged(System.Object,System.EventArgs)">
 	<summary>
- 修正対象ラジオボタン
+ 対象患者ラジオボタン
  </summary>
 	<param name="sender"></param>
 	<param name="e"></param>
@@ -273,6 +294,113 @@ AuditTool
  </summary>
 	<param name="sender"></param>
 	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.#ctor">
+	<summary>
+ コンストラクタ
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.閲覧用勤務_Load(System.Object,System.EventArgs)">
+	<summary>
+ loadイベント
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.initDgvWork">
+	<summary>
+ データグリッドビュー初期設定
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.createCellColor">
+	<summary>
+ セル背景色作成
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.clearDgv">
+	<summary>
+ データグリッドビュー内容クリア
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.setContextMenu">
+	<summary>
+ 右クリックメニュー設定
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.setDayCharRow(System.Int32,System.Int32)">
+	<summary>
+ 曜日行作成
+ </summary>
+	<param name="year"></param>
+	<param name="month"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.setHolidayCellColor(System.String,System.String)">
+	<summary>
+ 休日（日曜 or 祝日）背景色設定
+ </summary>
+	<param name="year">西暦(yyyy)</param>
+	<param name="month">月(MM)</param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.setWorkCellColor">
+	<summary>
+ 勤務名毎の背景色設定
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.setDisableCellColor">
+	<summary>
+ 編集不可セル背景色設定
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.setForeColor">
+	<summary>
+ 変更行の文字色設定
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.displayWork">
+	<summary>
+ 勤務データ表示
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.ymBox_YmdTextChange(System.Object,System.EventArgs)">
+	<summary>
+ 年月ボックス値変更時イベント
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.rbtnArrange_CheckedChanged(System.Object,System.EventArgs)">
+	<summary>
+ Arrange,Workラジオボタン値変更時イベント
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.rbtnType_CheckedChanged(System.Object,System.EventArgs)">
+	<summary>
+ 種類ラジオボタン値変更時イベント
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.rowInsert">
+	<summary>
+ 行挿入
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.rowDelete">
+	<summary>
+ 行削除
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.rowCopy">
+	<summary>
+ 行コピー
+ </summary>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.rowPaste">
+	<summary>
+ 行貼り付け
+ </summary>
 	<remarks></remarks>
 </member>
 </members>

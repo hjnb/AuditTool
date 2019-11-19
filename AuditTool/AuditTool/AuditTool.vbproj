@@ -112,6 +112,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Util.vb" />
+    <Compile Include="WorkDataGridView.Designer.vb">
+      <DependentUpon>WorkDataGridView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WorkDataGridView.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="勤務確認.Designer.vb">
       <DependentUpon>勤務確認.vb</DependentUpon>
     </Compile>
@@ -122,6 +128,12 @@
       <DependentUpon>看護記録関係.vb</DependentUpon>
     </Compile>
     <Compile Include="看護記録関係.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="閲覧用勤務.Designer.vb">
+      <DependentUpon>閲覧用勤務.vb</DependentUpon>
+    </Compile>
+    <Compile Include="閲覧用勤務.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -140,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="看護記録関係.resx">
       <DependentUpon>看護記録関係.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="閲覧用勤務.resx">
+      <DependentUpon>閲覧用勤務.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

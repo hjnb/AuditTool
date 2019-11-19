@@ -27,9 +27,14 @@
     Public dbDiaryFilePath As String = Util.getIniString("System", "DiaryDir", iniFilePath) & "\Diary.mdb"
     Public DB_Diary As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & dbDiaryFilePath
 
+    'Legalのデータベースパス
+    Public dbLegalFilePath As String = Util.getIniString("System", "LegalDir", iniFilePath) & "\Legal.mdb"
+    Public DB_Legal As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & dbLegalFilePath
+
     '各フォーム
     Private checkWorkForm As 勤務確認
     Private checkRecordForm As 看護記録関係
+    Private readWorkForm As 閲覧用勤務
 
     ''' <summary>
     ''' コンストラクタ
@@ -88,6 +93,11 @@
             Me.Close()
             Exit Sub
         End If
+        If Not System.IO.File.Exists(dbLegalFilePath) Then
+            MsgBox("Legalデータベースファイルが存在しません。" & Environment.NewLine & "iniファイルのLegalDirに適切なパスを設定して下さい。", MsgBoxStyle.Exclamation)
+            Me.Close()
+            Exit Sub
+        End If
     End Sub
 
     ''' <summary>
@@ -115,6 +125,20 @@
             checkRecordForm = New 看護記録関係()
             checkRecordForm.Owner = Me
             checkRecordForm.Show()
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' 閲覧用勤務ボタンクリックイベント
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub btnReadWork_Click(sender As System.Object, e As System.EventArgs) Handles btnReadWork.Click
+        If IsNothing(readWorkForm) OrElse readWorkForm.IsDisposed Then
+            readWorkForm = New 閲覧用勤務()
+            readWorkForm.Owner = Me
+            readWorkForm.Show()
         End If
     End Sub
 End Class
