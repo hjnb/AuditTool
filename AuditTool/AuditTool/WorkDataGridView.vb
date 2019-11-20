@@ -14,10 +14,10 @@
     Protected Overrides Function ProcessDataGridViewKey(e As System.Windows.Forms.KeyEventArgs) As Boolean
         'Dim inputStr As String = Util.checkDBNullValue(Me.CurrentCell.Value)
         If e.KeyCode = Keys.Enter Then
-            Me.ProcessTabKey(e.KeyCode)
+            Return Me.ProcessTabKey(e.KeyCode)
         End If
 
-        Dim tb As DataGridViewTextBoxEditingControl = CType(Me.EditingControl, DataGridViewTextBoxEditingControl)
+        Dim tb As DataGridViewTextBoxEditingControl = DirectCast(Me.EditingControl, DataGridViewTextBoxEditingControl)
         If Not IsNothing(tb) AndAlso ((e.KeyCode = Keys.Left AndAlso tb.SelectionStart = 0) OrElse (e.KeyCode = Keys.Right AndAlso tb.SelectionStart = tb.TextLength)) Then
             Return False
         Else

@@ -18,6 +18,12 @@
     '変更行の文字色
     Private changeForeColor As Color = Color.Red
 
+    '表示月の休日の日付保持用
+    Private holidayList As IEnumerable(Of Integer)
+
+    '表示月の月の日数保持用
+    Private daysInMonth As Integer
+
     ''' <summary>
     ''' コンストラクタ
     ''' </summary>
@@ -92,7 +98,7 @@
         Next
 
         '空行追加
-        For i = 0 To 1 + INPUT_ROW_COUNT
+        For i = 0 To INPUT_ROW_COUNT
             workDt.Rows.Add(workDt.NewRow())
         Next
 
@@ -214,7 +220,9 @@
     ''' <remarks></remarks>
     Private Sub setContextMenu()
         For Each row As DataGridViewRow In dgvWork.Rows
-            row.ContextMenuStrip = dgvContextMenu
+            If row.Index <> 0 Then
+                row.ContextMenuStrip = dgvContextMenu
+            End If
         Next
     End Sub
 
@@ -270,10 +278,10 @@
         Next
 
         '重複除外、昇順並び替え結果
-        Dim result As IEnumerable(Of Integer) = numList.Distinct().OrderBy(Function(x) x)
+        holidayList = numList.Distinct().OrderBy(Function(x) x)
 
         '背景色設定
-        For Each d As Integer In result
+        For Each d As Integer In holidayList
             For i As Integer = 0 To dgvWork.Rows.Count - 1
                 dgvWork("Y" & d, i).Style.BackColor = colorDic("Holiday")
             Next
@@ -303,7 +311,7 @@
     ''' <remarks></remarks>
     Private Sub setDisableCellColor()
         '月の日数
-        Dim daysInMonth As Integer = 31
+        daysInMonth = 31
         For i As Integer = 29 To 31
             Dim youbi As String = Util.checkDBNullValue(dgvWork("Y" & i, 0).Value)
             If youbi = "" Then
@@ -357,6 +365,9 @@
         Dim yyyy As Integer = CInt(ym.Split("/")(0))
         Dim MM As Integer = CInt(ym.Split("/")(1))
         setDayCharRow(yyyy, MM)
+
+        '行番号設定
+        setSeqValue()
 
         '勤務データ取得、表示
         Dim targetDB As String = If(rbtnArrange.Checked, TopForm.DB_Arrange, TopForm.DB_Work2) 'データベース
@@ -484,11 +495,84 @@
     End Sub
 
     ''' <summary>
+    ''' 行番号(seq)セット
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub setSeqValue()
+        For i As Integer = 1 To INPUT_ROW_COUNT Step 2
+            workDt.Rows(i).Item("Seq") = i + 1
+        Next
+    End Sub
+
+    ''' <summary>
     ''' 行挿入
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub rowInsert()
+        Dim selectedRowIndex As Integer = If(IsNothing(dgvWork.CurrentRow), -1, dgvWork.CurrentRow.Index) '選択行index
+        If selectedRowIndex = -1 OrElse selectedRowIndex = 0 OrElse selectedRowIndex >= (INPUT_ROW_COUNT + 1) Then
+            MsgBox("行挿入できません。", MsgBoxStyle.Exclamation)
+            Return
+        ElseIf Not IsDBNull(workDt.Rows(INPUT_ROW_COUNT - 1).Item("Nam")) AndAlso workDt.Rows(INPUT_ROW_COUNT - 1).Item("Nam") <> "" Then
+            '一番下の予定行に既に名前が入力されている場合は行挿入禁止
+            MsgBox("これ以上行挿入できません。", MsgBoxStyle.Exclamation)
+            Return
+        Else
+            '変更の行を選択してる場合は予定の行を選択しているindexとする
+            If selectedRowIndex Mod 2 = 0 Then
+                selectedRowIndex -= 1
+            End If
 
+            '行追加
+            Dim rowH As DataRow = workDt.NewRow()
+            Dim rowY As DataRow = workDt.NewRow()
+            rowY("Seq") = selectedRowIndex + 1
+            workDt.Rows.InsertAt(rowH, selectedRowIndex) '変更行
+            workDt.Rows.InsertAt(rowY, selectedRowIndex) '予定行
+
+            '追加した行の設定
+            '休日の背景色
+            For Each d As Integer In holidayList
+                dgvWork("Y" & d, selectedRowIndex).Style.BackColor = colorDic("Holiday")
+                dgvWork("Y" & d, selectedRowIndex + 1).Style.BackColor = colorDic("Holiday")
+            Next
+            '編集不可セル背景色
+            For i As Integer = daysInMonth + 1 To 31
+                '存在しない日付部分
+                dgvWork("Y" & i, selectedRowIndex).Style.BackColor = colorDic("Disable")
+                dgvWork("Y" & i, selectedRowIndex).ReadOnly = True
+                dgvWork("Y" & i, selectedRowIndex + 1).Style.BackColor = colorDic("Disable")
+                dgvWork("Y" & i, selectedRowIndex + 1).ReadOnly = True
+            Next
+            dgvWork("Syu", selectedRowIndex + 1).Style.BackColor = colorDic("Disable")
+            dgvWork("Syu", selectedRowIndex + 1).ReadOnly = True
+            dgvWork("Nam", selectedRowIndex + 1).Style.BackColor = colorDic("Disable")
+            dgvWork("Nam", selectedRowIndex + 1).ReadOnly = True
+            dgvWork("Type", selectedRowIndex).Value = "予定"
+            dgvWork("Type", selectedRowIndex).Style.BackColor = colorDic("Disable")
+            dgvWork("Type", selectedRowIndex).ReadOnly = True
+            dgvWork("Type", selectedRowIndex + 1).Value = "変更"
+            dgvWork("Type", selectedRowIndex + 1).Style.BackColor = colorDic("Disable")
+            dgvWork("Type", selectedRowIndex + 1).ReadOnly = True
+            '変更行の文字色
+            For i As Integer = 1 To 31
+                dgvWork("Y" & i, selectedRowIndex + 1).Style.ForeColor = changeForeColor
+                dgvWork("Y" & i, selectedRowIndex + 1).Style.SelectionForeColor = changeForeColor
+            Next
+            '右クリックメニュー
+            dgvWork.Rows(selectedRowIndex).ContextMenuStrip = dgvContextMenu
+            dgvWork.Rows(selectedRowIndex + 1).ContextMenuStrip = dgvContextMenu
+
+            '追加された行以降のSeqの値を更新
+            For i As Integer = selectedRowIndex + 2 To INPUT_ROW_COUNT - 1 Step 2
+                Dim seq As Integer = CInt(workDt.Rows(i).Item("Seq"))
+                workDt.Rows(i).Item("Seq") = (seq + 2).ToString()
+            Next
+
+            '下から２行削除
+            workDt.Rows.RemoveAt(INPUT_ROW_COUNT + 1)
+            workDt.Rows.RemoveAt(INPUT_ROW_COUNT + 1)
+        End If
     End Sub
 
     ''' <summary>
@@ -496,7 +580,62 @@
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub rowDelete()
+        Dim selectedRowIndex As Integer = If(IsNothing(dgvWork.CurrentRow), -1, dgvWork.CurrentRow.Index) '選択行index
+        If selectedRowIndex = -1 OrElse selectedRowIndex = 0 OrElse selectedRowIndex >= (INPUT_ROW_COUNT + 1) Then
+            MsgBox("行削除できません。", MsgBoxStyle.Exclamation)
+            Return
+        Else
+            '変更行を選択してる場合は予定行を選択しているindexとする
+            If selectedRowIndex Mod 2 = 0 Then
+                selectedRowIndex -= 1
+            End If
 
+            '行削除
+            workDt.Rows.RemoveAt(selectedRowIndex)
+            workDt.Rows.RemoveAt(selectedRowIndex)
+
+            '削除された行以降のSeqの値を更新
+            For i As Integer = selectedRowIndex To INPUT_ROW_COUNT - 3 Step 2
+                workDt.Rows(i).Item("Seq") -= 2
+            Next
+
+            '下に2行追加
+            Dim row As DataRow = workDt.NewRow()
+            row("Seq") = INPUT_ROW_COUNT
+            workDt.Rows.InsertAt(workDt.NewRow(), INPUT_ROW_COUNT - 1)
+            workDt.Rows.InsertAt(row, INPUT_ROW_COUNT - 1)
+
+            '追加した行の設定
+            '休日の背景色
+            For Each d As Integer In holidayList
+                dgvWork("Y" & d, INPUT_ROW_COUNT).Style.BackColor = colorDic("Holiday")
+                dgvWork("Y" & d, INPUT_ROW_COUNT - 1).Style.BackColor = colorDic("Holiday")
+            Next
+            '編集不可セル背景色
+            For i As Integer = daysInMonth + 1 To 31
+                '存在しない日付部分
+                dgvWork("Y" & i, INPUT_ROW_COUNT).Style.BackColor = colorDic("Disable")
+                dgvWork("Y" & i, INPUT_ROW_COUNT).ReadOnly = True
+                dgvWork("Y" & i, INPUT_ROW_COUNT - 1).Style.BackColor = colorDic("Disable")
+                dgvWork("Y" & i, INPUT_ROW_COUNT - 1).ReadOnly = True
+            Next
+            dgvWork("Syu", INPUT_ROW_COUNT).Style.BackColor = colorDic("Disable")
+            dgvWork("Syu", INPUT_ROW_COUNT).ReadOnly = True
+            dgvWork("Nam", INPUT_ROW_COUNT).Style.BackColor = colorDic("Disable")
+            dgvWork("Nam", INPUT_ROW_COUNT).ReadOnly = True
+            dgvWork("Type", INPUT_ROW_COUNT - 1).Style.BackColor = colorDic("Disable")
+            dgvWork("Type", INPUT_ROW_COUNT - 1).ReadOnly = True
+            dgvWork("Type", INPUT_ROW_COUNT).Style.BackColor = colorDic("Disable")
+            dgvWork("Type", INPUT_ROW_COUNT).ReadOnly = True
+            '変更行の文字色
+            For i As Integer = 1 To 31
+                dgvWork("Y" & i, INPUT_ROW_COUNT).Style.ForeColor = changeForeColor
+                dgvWork("Y" & i, INPUT_ROW_COUNT).Style.SelectionForeColor = changeForeColor
+            Next
+            '右クリックメニュー
+            dgvWork.Rows(INPUT_ROW_COUNT).ContextMenuStrip = dgvContextMenu
+            dgvWork.Rows(INPUT_ROW_COUNT - 1).ContextMenuStrip = dgvContextMenu
+        End If
     End Sub
 
     ''' <summary>
@@ -513,5 +652,25 @@
     ''' <remarks></remarks>
     Private Sub rowPaste()
 
+    End Sub
+
+    ''' <summary>
+    ''' 行挿入メニュークリック
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub 行挿入ToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles 行挿入ToolStripMenuItem.Click
+        rowInsert()
+    End Sub
+
+    ''' <summary>
+    ''' 行削除メニュークリック
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub 行削除ToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles 行削除ToolStripMenuItem.Click
+        rowDelete()
     End Sub
 End Class

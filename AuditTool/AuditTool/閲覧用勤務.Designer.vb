@@ -33,7 +33,7 @@ Partial Class 閲覧用勤務
         Me.rbtnSanato = New System.Windows.Forms.RadioButton()
         Me.rbtnNurse = New System.Windows.Forms.RadioButton()
         Me.dgvContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.AaaaaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.行挿入ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.行削除ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.コピーToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.貼り付けToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -146,32 +146,32 @@ Partial Class 閲覧用勤務
         '
         'dgvContextMenu
         '
-        Me.dgvContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AaaaaToolStripMenuItem, Me.行削除ToolStripMenuItem, Me.コピーToolStripMenuItem, Me.貼り付けToolStripMenuItem})
+        Me.dgvContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.行挿入ToolStripMenuItem, Me.行削除ToolStripMenuItem, Me.コピーToolStripMenuItem, Me.貼り付けToolStripMenuItem})
         Me.dgvContextMenu.Name = "dgvContextMenu"
-        Me.dgvContextMenu.Size = New System.Drawing.Size(116, 92)
+        Me.dgvContextMenu.Size = New System.Drawing.Size(153, 114)
         '
-        'AaaaaToolStripMenuItem
+        '行挿入ToolStripMenuItem
         '
-        Me.AaaaaToolStripMenuItem.Name = "AaaaaToolStripMenuItem"
-        Me.AaaaaToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
-        Me.AaaaaToolStripMenuItem.Text = "行挿入"
+        Me.行挿入ToolStripMenuItem.Name = "行挿入ToolStripMenuItem"
+        Me.行挿入ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.行挿入ToolStripMenuItem.Text = "行挿入"
         '
         '行削除ToolStripMenuItem
         '
         Me.行削除ToolStripMenuItem.Name = "行削除ToolStripMenuItem"
-        Me.行削除ToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.行削除ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.行削除ToolStripMenuItem.Text = "行削除"
         '
         'コピーToolStripMenuItem
         '
         Me.コピーToolStripMenuItem.Name = "コピーToolStripMenuItem"
-        Me.コピーToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.コピーToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.コピーToolStripMenuItem.Text = "コピー"
         '
         '貼り付けToolStripMenuItem
         '
         Me.貼り付けToolStripMenuItem.Name = "貼り付けToolStripMenuItem"
-        Me.貼り付けToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.貼り付けToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.貼り付けToolStripMenuItem.Text = "貼り付け"
         '
         'dgvWork
@@ -214,7 +214,7 @@ Partial Class 閲覧用勤務
     Friend WithEvents rbtnSanato As System.Windows.Forms.RadioButton
     Friend WithEvents rbtnNurse As System.Windows.Forms.RadioButton
     Friend WithEvents dgvContextMenu As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents AaaaaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents 行挿入ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents 行削除ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents コピーToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents 貼り付けToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
