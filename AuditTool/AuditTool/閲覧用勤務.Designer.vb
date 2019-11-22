@@ -55,7 +55,7 @@ Partial Class 閲覧用勤務
         Me.ymBox.MonthText = ""
         Me.ymBox.Name = "ymBox"
         Me.ymBox.Size = New System.Drawing.Size(120, 46)
-        Me.ymBox.TabIndex = 1
+        Me.ymBox.TabIndex = 100
         Me.ymBox.textReadOnly = False
         '
         'Panel1
@@ -148,31 +148,31 @@ Partial Class 閲覧用勤務
         '
         Me.dgvContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.行挿入ToolStripMenuItem, Me.行削除ToolStripMenuItem, Me.コピーToolStripMenuItem, Me.貼り付けToolStripMenuItem})
         Me.dgvContextMenu.Name = "dgvContextMenu"
-        Me.dgvContextMenu.Size = New System.Drawing.Size(153, 114)
+        Me.dgvContextMenu.Size = New System.Drawing.Size(128, 92)
         '
         '行挿入ToolStripMenuItem
         '
         Me.行挿入ToolStripMenuItem.Name = "行挿入ToolStripMenuItem"
-        Me.行挿入ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.行挿入ToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.行挿入ToolStripMenuItem.Text = "行挿入"
         '
         '行削除ToolStripMenuItem
         '
         Me.行削除ToolStripMenuItem.Name = "行削除ToolStripMenuItem"
-        Me.行削除ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.行削除ToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.行削除ToolStripMenuItem.Text = "行削除"
         '
         'コピーToolStripMenuItem
         '
         Me.コピーToolStripMenuItem.Name = "コピーToolStripMenuItem"
-        Me.コピーToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.コピーToolStripMenuItem.Text = "コピー"
+        Me.コピーToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.コピーToolStripMenuItem.Text = "行コピー"
         '
         '貼り付けToolStripMenuItem
         '
         Me.貼り付けToolStripMenuItem.Name = "貼り付けToolStripMenuItem"
-        Me.貼り付けToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.貼り付けToolStripMenuItem.Text = "貼り付け"
+        Me.貼り付けToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.貼り付けToolStripMenuItem.Text = "行貼り付け"
         '
         'dgvWork
         '
@@ -181,7 +181,7 @@ Partial Class 閲覧用勤務
         Me.dgvWork.Name = "dgvWork"
         Me.dgvWork.RowTemplate.Height = 21
         Me.dgvWork.Size = New System.Drawing.Size(1567, 517)
-        Me.dgvWork.TabIndex = 0
+        Me.dgvWork.TabIndex = 1
         '
         '閲覧用勤務
         '

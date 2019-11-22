@@ -421,6 +421,20 @@ AuditTool
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.行コピーToolStripMenuItem_Click(System.Object,System.EventArgs)">
+	<summary>
+ 行コピーメニュークリック
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.閲覧用勤務.行貼り付けToolStripMenuItem_Click(System.Object,System.EventArgs)">
+	<summary>
+ 行貼り付けメニュークリック
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
 </member>
 </members>
 </doc>

@@ -24,6 +24,10 @@
     '表示月の月の日数保持用
     Private daysInMonth As Integer
 
+    '行コピー保持用
+    Private copyRowY As DataRow
+    Private copyRowH As DataRow
+
     ''' <summary>
     ''' コンストラクタ
     ''' </summary>
@@ -156,6 +160,9 @@
                 End With
             Next
         End With
+
+        copyRowY = workDt.NewRow()
+        copyRowH = workDt.NewRow()
     End Sub
 
     ''' <summary>
@@ -643,7 +650,22 @@
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub rowCopy()
+        Dim selectedRowIndex As Integer = If(IsNothing(dgvWork.CurrentRow), -1, dgvWork.CurrentRow.Index) '選択行index
+        If selectedRowIndex = -1 OrElse selectedRowIndex = 0 OrElse selectedRowIndex >= (INPUT_ROW_COUNT + 1) Then
+            MsgBox("行コピーできません。", MsgBoxStyle.Exclamation)
+            Return
+        Else
+            '変更行を選択してる場合は予定行を選択しているindexとする
+            If selectedRowIndex Mod 2 = 0 Then
+                selectedRowIndex -= 1
+            End If
 
+            '予定行、変更行コピー
+            For i As Integer = 0 To workDt.Columns.Count - 1
+                copyRowY.Item(i) = workDt.Rows(selectedRowIndex).Item(i)
+                copyRowH.Item(i) = workDt.Rows(selectedRowIndex + 1).Item(i)
+            Next
+        End If
     End Sub
 
     ''' <summary>
@@ -651,7 +673,41 @@
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub rowPaste()
+        Dim selectedRowIndex As Integer = If(IsNothing(dgvWork.CurrentRow), -1, dgvWork.CurrentRow.Index) '選択行index
+        If selectedRowIndex = -1 OrElse selectedRowIndex = 0 OrElse selectedRowIndex >= (INPUT_ROW_COUNT + 1) Then
+            MsgBox("行貼り付けできません。", MsgBoxStyle.Exclamation)
+            Return
+        Else
+            '変更行を選択してる場合は予定行を選択しているindexとする
+            If selectedRowIndex Mod 2 = 0 Then
+                selectedRowIndex -= 1
+            End If
 
+            'コピー行情報を選択行にセット
+            For i As Integer = 0 To workDt.Columns.Count - 1
+                '行番号はそのまま
+                If workDt.Columns(i).ColumnName <> "Seq" Then
+                    workDt.Rows(selectedRowIndex).Item(i) = copyRowY.Item(i)
+                    workDt.Rows(selectedRowIndex + 1).Item(i) = copyRowH.Item(i)
+                End If
+            Next
+
+            '休日の背景色設定
+            setHolidayCellColor(ymBox.getADYmStr().Split("/")(0), ymBox.getADYmStr().Split("/")(1))
+
+            '勤務名毎の背景色設定
+            setWorkCellColor()
+
+            '編集不可セル背景色設定
+            setDisableCellColor()
+
+            '変更行の文字色設定
+            setForeColor()
+
+            '右クリックメニュー設定
+            setContextMenu()
+
+        End If
     End Sub
 
     ''' <summary>
@@ -672,5 +728,25 @@
     ''' <remarks></remarks>
     Private Sub 行削除ToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles 行削除ToolStripMenuItem.Click
         rowDelete()
+    End Sub
+
+    ''' <summary>
+    ''' 行コピーメニュークリック
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub 行コピーToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles コピーToolStripMenuItem.Click
+        rowCopy()
+    End Sub
+
+    ''' <summary>
+    ''' 行貼り付けメニュークリック
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub 行貼り付けToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles 貼り付けToolStripMenuItem.Click
+        rowPaste()
     End Sub
 End Class
