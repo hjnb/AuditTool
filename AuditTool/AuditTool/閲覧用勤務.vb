@@ -306,6 +306,10 @@
                     Dim work As String = Util.checkDBNullValue(dgvWork("Y" & i, j).Value)
                     If colorDic.ContainsKey(work) Then
                         dgvWork("Y" & i, j).Style.BackColor = colorDic(work)
+                    Else
+                        If dgvWork("Y" & i, j).Style.BackColor <> colorDic("Holiday") Then
+                            dgvWork("Y" & i, j).Style.BackColor = colorDic("Default")
+                        End If
                     End If
                 End If
             Next

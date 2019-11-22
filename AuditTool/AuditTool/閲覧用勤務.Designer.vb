@@ -97,7 +97,7 @@ Partial Class 閲覧用勤務
         Me.Panel2.Controls.Add(Me.rbtnNurse)
         Me.Panel2.Location = New System.Drawing.Point(174, 6)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(274, 93)
+        Me.Panel2.Size = New System.Drawing.Size(150, 65)
         Me.Panel2.TabIndex = 3
         '
         'rbtnHead
