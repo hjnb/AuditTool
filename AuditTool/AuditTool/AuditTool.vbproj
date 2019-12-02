@@ -112,6 +112,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Util.vb" />
+    <Compile Include="WeekDataGridView.Designer.vb">
+      <DependentUpon>WeekDataGridView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeekDataGridView.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WorkDataGridView.Designer.vb">
       <DependentUpon>WorkDataGridView.vb</DependentUpon>
     </Compile>
@@ -124,16 +130,34 @@
     <Compile Include="勤務確認.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="日誌チェック.Designer.vb">
+      <DependentUpon>日誌チェック.vb</DependentUpon>
+    </Compile>
+    <Compile Include="日誌チェック.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="看護記録関係.Designer.vb">
       <DependentUpon>看護記録関係.vb</DependentUpon>
     </Compile>
     <Compile Include="看護記録関係.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="記録チェック.Designer.vb">
+      <DependentUpon>記録チェック.vb</DependentUpon>
+    </Compile>
+    <Compile Include="記録チェック.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="閲覧用勤務.Designer.vb">
       <DependentUpon>閲覧用勤務.vb</DependentUpon>
     </Compile>
     <Compile Include="閲覧用勤務.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="閲覧用週間表.Designer.vb">
+      <DependentUpon>閲覧用週間表.vb</DependentUpon>
+    </Compile>
+    <Compile Include="閲覧用週間表.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -150,11 +174,20 @@
     <EmbeddedResource Include="勤務確認.resx">
       <DependentUpon>勤務確認.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="日誌チェック.resx">
+      <DependentUpon>日誌チェック.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="看護記録関係.resx">
       <DependentUpon>看護記録関係.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="記録チェック.resx">
+      <DependentUpon>記録チェック.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="閲覧用勤務.resx">
       <DependentUpon>閲覧用勤務.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="閲覧用週間表.resx">
+      <DependentUpon>閲覧用週間表.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
