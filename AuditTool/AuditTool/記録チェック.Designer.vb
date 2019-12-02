@@ -51,6 +51,7 @@ Partial Class 記録チェック
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnSetNyuYmd = New System.Windows.Forms.Button()
         Me.btnNow = New System.Windows.Forms.Button()
+        Me.btnSetTaiYmd = New System.Windows.Forms.Button()
         CType(Me.dgvPatient, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -102,7 +103,7 @@ Partial Class 記録チェック
         Me.fromYmdBox.EraLabelText = "R01"
         Me.fromYmdBox.EraText = ""
         Me.fromYmdBox.Location = New System.Drawing.Point(259, 215)
-        Me.fromYmdBox.MonthLabelText = "11"
+        Me.fromYmdBox.MonthLabelText = "12"
         Me.fromYmdBox.MonthText = ""
         Me.fromYmdBox.Name = "fromYmdBox"
         Me.fromYmdBox.Size = New System.Drawing.Size(112, 30)
@@ -116,7 +117,7 @@ Partial Class 記録チェック
         Me.toYmdBox.EraLabelText = "R01"
         Me.toYmdBox.EraText = ""
         Me.toYmdBox.Location = New System.Drawing.Point(406, 215)
-        Me.toYmdBox.MonthLabelText = "11"
+        Me.toYmdBox.MonthLabelText = "12"
         Me.toYmdBox.MonthText = ""
         Me.toYmdBox.Name = "toYmdBox"
         Me.toYmdBox.Size = New System.Drawing.Size(112, 30)
@@ -345,11 +346,21 @@ Partial Class 記録チェック
         Me.btnNow.Text = "Now"
         Me.btnNow.UseVisualStyleBackColor = True
         '
+        'btnSetTaiYmd
+        '
+        Me.btnSetTaiYmd.Location = New System.Drawing.Point(441, 181)
+        Me.btnSetTaiYmd.Name = "btnSetTaiYmd"
+        Me.btnSetTaiYmd.Size = New System.Drawing.Size(65, 23)
+        Me.btnSetTaiYmd.TabIndex = 26
+        Me.btnSetTaiYmd.Text = "日付セット"
+        Me.btnSetTaiYmd.UseVisualStyleBackColor = True
+        '
         '記録チェック
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(549, 630)
+        Me.Controls.Add(Me.btnSetTaiYmd)
         Me.Controls.Add(Me.btnNow)
         Me.Controls.Add(Me.btnSetNyuYmd)
         Me.Controls.Add(Me.Label10)
@@ -414,4 +425,5 @@ Partial Class 記録チェック
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents btnSetNyuYmd As System.Windows.Forms.Button
     Friend WithEvents btnNow As System.Windows.Forms.Button
+    Friend WithEvents btnSetTaiYmd As System.Windows.Forms.Button
 End Class

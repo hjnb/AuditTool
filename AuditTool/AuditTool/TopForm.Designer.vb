@@ -28,6 +28,8 @@ Partial Class TopForm
         Me.btnCheckDiary = New System.Windows.Forms.Button()
         Me.btnReadWeek = New System.Windows.Forms.Button()
         Me.btnReadWork = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnRecord
@@ -36,12 +38,12 @@ Partial Class TopForm
         Me.btnRecord.Name = "btnRecord"
         Me.btnRecord.Size = New System.Drawing.Size(106, 42)
         Me.btnRecord.TabIndex = 0
-        Me.btnRecord.Text = "看護記録関係"
+        Me.btnRecord.Text = "看護記録者修正"
         Me.btnRecord.UseVisualStyleBackColor = True
         '
         'btnCheckWork
         '
-        Me.btnCheckWork.Location = New System.Drawing.Point(21, 108)
+        Me.btnCheckWork.Location = New System.Drawing.Point(166, 31)
         Me.btnCheckWork.Name = "btnCheckWork"
         Me.btnCheckWork.Size = New System.Drawing.Size(106, 42)
         Me.btnCheckWork.TabIndex = 1
@@ -50,7 +52,7 @@ Partial Class TopForm
         '
         'btnRecordCheck
         '
-        Me.btnRecordCheck.Location = New System.Drawing.Point(21, 185)
+        Me.btnRecordCheck.Location = New System.Drawing.Point(21, 108)
         Me.btnRecordCheck.Name = "btnRecordCheck"
         Me.btnRecordCheck.Size = New System.Drawing.Size(106, 42)
         Me.btnRecordCheck.TabIndex = 2
@@ -59,7 +61,7 @@ Partial Class TopForm
         '
         'btnCheckDiary
         '
-        Me.btnCheckDiary.Location = New System.Drawing.Point(21, 261)
+        Me.btnCheckDiary.Location = New System.Drawing.Point(21, 185)
         Me.btnCheckDiary.Name = "btnCheckDiary"
         Me.btnCheckDiary.Size = New System.Drawing.Size(106, 42)
         Me.btnCheckDiary.TabIndex = 3
@@ -68,7 +70,7 @@ Partial Class TopForm
         '
         'btnReadWeek
         '
-        Me.btnReadWeek.Location = New System.Drawing.Point(166, 108)
+        Me.btnReadWeek.Location = New System.Drawing.Point(166, 185)
         Me.btnReadWeek.Name = "btnReadWeek"
         Me.btnReadWeek.Size = New System.Drawing.Size(106, 42)
         Me.btnReadWeek.TabIndex = 4
@@ -77,18 +79,36 @@ Partial Class TopForm
         '
         'btnReadWork
         '
-        Me.btnReadWork.Location = New System.Drawing.Point(166, 185)
+        Me.btnReadWork.Location = New System.Drawing.Point(166, 108)
         Me.btnReadWork.Name = "btnReadWork"
         Me.btnReadWork.Size = New System.Drawing.Size(106, 42)
         Me.btnReadWork.TabIndex = 5
         Me.btnReadWork.Text = "閲覧用勤務表"
         Me.btnReadWork.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(21, 262)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(106, 42)
+        Me.Button1.TabIndex = 6
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(166, 262)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(106, 42)
+        Me.Button2.TabIndex = 7
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'TopForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(294, 331)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnReadWork)
         Me.Controls.Add(Me.btnReadWeek)
         Me.Controls.Add(Me.btnCheckDiary)
@@ -106,5 +126,7 @@ Partial Class TopForm
     Friend WithEvents btnCheckDiary As System.Windows.Forms.Button
     Friend WithEvents btnReadWeek As System.Windows.Forms.Button
     Friend WithEvents btnReadWork As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 
 End Class

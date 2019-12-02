@@ -257,7 +257,7 @@ AuditTool
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
-</member><member name="M:AuditTool.記録チェック.setPatientInfo(System.Int32)">
+</member><member name="M:AuditTool.記録チェック.setPatientInfo(System.Int32,System.String)">
 	<summary>
  患者情報取得、設定
  </summary>
@@ -280,6 +280,13 @@ AuditTool
 </member><member name="M:AuditTool.記録チェック.btnSetNyuYmd_Click(System.Object,System.EventArgs)">
 	<summary>
  入院日日付セットボタンクリックイベント
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.記録チェック.btnSetTaiYmd_Click(System.Object,System.EventArgs)">
+	<summary>
+ 退院日日付セットボタンクリックイベント
  </summary>
 	<param name="sender"></param>
 	<param name="e"></param>
@@ -353,6 +360,34 @@ AuditTool
 </member><member name="M:AuditTool.日誌チェック.btnCheck_Click(System.Object,System.EventArgs)">
 	<summary>
  チェック実行ボタンクリックイベント
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.日誌チェック.checkDiary(System.String,System.String)">
+	<summary>
+ 一般、療養病棟日誌チェック
+ </summary>
+	<param name="fromYmd">開始日付(yyyy/MM/dd)</param>
+	<param name="toYmd">終了日付(yyyy/MM/dd)</param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.日誌チェック.checkDrDiary(System.String,System.String)">
+	<summary>
+ 医師当直日誌チェック
+ </summary>
+	<param name="fromYmd">開始日付(yyyy/MM/dd)</param>
+	<param name="toYmd">終了日付(yyyy/MM/dd)</param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.日誌チェック.checkGaiDiary(System.String,System.String)">
+	<summary>
+ 外来日誌チェック
+ </summary>
+	<param name="fromYmd">開始日付(yyyy/MM/dd)</param>
+	<param name="toYmd">終了日付(yyyy/MM/dd)</param>
+	<remarks></remarks>
+</member><member name="M:AuditTool.日誌チェック.rbtn_CheckedChanged(System.Object,System.EventArgs)">
+	<summary>
+ ラジオボタン値変更時イベント
  </summary>
 	<param name="sender"></param>
 	<param name="e"></param>

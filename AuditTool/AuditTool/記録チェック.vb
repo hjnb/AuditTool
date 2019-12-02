@@ -143,7 +143,7 @@ Public Class 記録チェック
         If e.RowIndex >= 0 Then
             Dim cod As String = dgvPatient("Cod", e.RowIndex).Value.ToString()
             '患者情報取得、設定
-            setPatientInfo(CInt(cod))
+            setPatientInfo(CInt(cod), If(rbtnI.Checked, "一般", "療養"))
         End If
     End Sub
 
@@ -152,11 +152,11 @@ Public Class 記録チェック
     ''' </summary>
     ''' <param name="cod">患者ｺｰﾄﾞ</param>
     ''' <remarks></remarks>
-    Private Sub setPatientInfo(cod As Integer)
+    Private Sub setPatientInfo(cod As Integer, div As String)
         clearInfo()
         Dim cn As New ADODB.Connection()
         cn.Open(TopForm.DB_Patient)
-        Dim sql As String = "select U.Cod, U.Nam, U.Kana, U.Birth, H.Ymd1, H.Ymd2 from UsrM as U inner join (select Cod, Ymd1, Ymd2 from Hist where Cod = " & cod & " and Ymd1 = (select Max(Ymd1) from Hist where Cod = " & cod & " group by Cod)) as H on U.Cod = H.Cod"
+        Dim sql As String = "select U.Cod, U.Nam, U.Kana, U.Birth, H.Ymd1, H.Ymd2 from UsrM as U inner join (select Cod, Ymd1, Ymd2 from Hist where Cod = " & cod & " and Ymd1 = (select Max(Ymd1) from Hist where Cod = " & cod & " and Div = '" & div & "' group by Cod)) as H on U.Cod = H.Cod"
         Dim rs As New ADODB.Recordset
         rs.Open(sql, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
         If rs.RecordCount > 0 Then
@@ -198,7 +198,7 @@ Public Class 記録チェック
             Return
         End If
         Dim cod As Integer = CInt(codBox.Text)
-        setPatientInfo(cod)
+        setPatientInfo(cod, If(rbtnI.Checked, "一般", "療養"))
         dgvPatient.ClearSelection()
     End Sub
 
@@ -241,7 +241,7 @@ Public Class 記録チェック
         Next
         '対象のテーブル名
         Dim tableList As New List(Of String)
-        Dim baseName As String = If(rbtnI.Checked, "Kir", "KirN") '一般:Kir, 療養:KirN
+        Dim baseName As String = If(rbtnNurse.Checked, "Kir", "KirN") '一般:Kir, 療養:KirN
         For Each y As Integer In yearList
             tableList.Add(baseName & y)
         Next
@@ -329,6 +329,19 @@ Public Class 記録チェック
         If nyuLabel.Text <> "" Then
             Dim ymdWareki As String = nyuLabel.Text.Split(" ")(0)
             fromYmdBox.setWarekiStr(ymdWareki)
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' 退院日日付セットボタンクリックイベント
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub btnSetTaiYmd_Click(sender As System.Object, e As System.EventArgs) Handles btnSetTaiYmd.Click
+        If TaiLabel.Text <> "" Then
+            Dim ymdWareki As String = TaiLabel.Text.Split(" ")(0)
+            toYmdBox.setWarekiStr(ymdWareki)
         End If
     End Sub
 
