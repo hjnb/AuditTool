@@ -42,6 +42,7 @@
     Private readWeekForm As 閲覧用週間表
     Private checkRecordForm As 記録チェック
     Private checkDiaryForm As 日誌チェック
+    Private inputDiaryForm As 日誌数値入力
 
     ''' <summary>
     ''' コンストラクタ
@@ -193,6 +194,20 @@
             checkDiaryForm = New 日誌チェック()
             checkDiaryForm.Owner = Me
             checkDiaryForm.Show()
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' 日誌数値入力ボタンクリックイベント
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub btnDiaryInput_Click(sender As System.Object, e As System.EventArgs) Handles btnDiaryInput.Click
+        If IsNothing(inputDiaryForm) OrElse inputDiaryForm.IsDisposed Then
+            inputDiaryForm = New 日誌数値入力()
+            inputDiaryForm.Owner = Me
+            inputDiaryForm.Show()
         End If
     End Sub
 End Class

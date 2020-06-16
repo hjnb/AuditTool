@@ -83,6 +83,12 @@
     <Compile Include="CalendarEditingControl.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DiaryDataGridView.Designer.vb">
+      <DependentUpon>DiaryDataGridView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DiaryDataGridView.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ExDataGridView.Designer.vb">
       <DependentUpon>ExDataGridView.vb</DependentUpon>
     </Compile>
@@ -136,6 +142,12 @@
     <Compile Include="日誌チェック.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="日誌数値入力.Designer.vb">
+      <DependentUpon>日誌数値入力.vb</DependentUpon>
+    </Compile>
+    <Compile Include="日誌数値入力.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="看護記録関係.Designer.vb">
       <DependentUpon>看護記録関係.vb</DependentUpon>
     </Compile>
@@ -176,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="日誌チェック.resx">
       <DependentUpon>日誌チェック.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="日誌数値入力.resx">
+      <DependentUpon>日誌数値入力.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="看護記録関係.resx">
       <DependentUpon>看護記録関係.vb</DependentUpon>

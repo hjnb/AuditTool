@@ -28,8 +28,8 @@ Partial Class TopForm
         Me.btnCheckDiary = New System.Windows.Forms.Button()
         Me.btnReadWeek = New System.Windows.Forms.Button()
         Me.btnReadWork = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnDiaryInput = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnRecord
@@ -86,14 +86,6 @@ Partial Class TopForm
         Me.btnReadWork.Text = "閲覧用勤務表"
         Me.btnReadWork.UseVisualStyleBackColor = True
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(21, 262)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(106, 42)
-        Me.Button1.TabIndex = 6
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(166, 262)
@@ -102,13 +94,22 @@ Partial Class TopForm
         Me.Button2.TabIndex = 7
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'btnDiaryInput
+        '
+        Me.btnDiaryInput.Location = New System.Drawing.Point(21, 262)
+        Me.btnDiaryInput.Name = "btnDiaryInput"
+        Me.btnDiaryInput.Size = New System.Drawing.Size(106, 42)
+        Me.btnDiaryInput.TabIndex = 8
+        Me.btnDiaryInput.Text = "日誌数値入力"
+        Me.btnDiaryInput.UseVisualStyleBackColor = True
+        '
         'TopForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(294, 331)
+        Me.ClientSize = New System.Drawing.Size(298, 467)
+        Me.Controls.Add(Me.btnDiaryInput)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnReadWork)
         Me.Controls.Add(Me.btnReadWeek)
         Me.Controls.Add(Me.btnCheckDiary)
@@ -126,7 +127,7 @@ Partial Class TopForm
     Friend WithEvents btnCheckDiary As System.Windows.Forms.Button
     Friend WithEvents btnReadWeek As System.Windows.Forms.Button
     Friend WithEvents btnReadWork As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnDiaryInput As System.Windows.Forms.Button
 
 End Class
