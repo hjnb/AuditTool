@@ -13,6 +13,18 @@
 
     Public Property mode As Integer = Type.Gairai
 
+    Protected Overrides Function ProcessDialogKey(keyData As System.Windows.Forms.Keys) As Boolean
+        Dim inputStr As String = If(Not IsNothing(Me.EditingControl), CType(Me.EditingControl, DataGridViewTextBoxEditingControl).Text, "") '入力文字
+        Dim columnName As String = Me.Columns(CurrentCell.ColumnIndex).Name '選択列名
+        If Not (columnName = "Date" OrElse columnName = "Day") AndAlso keyData = Keys.Back Then
+            CurrentCell.Value = ""
+            BeginEdit(True)
+            Return MyBase.ProcessDialogKey(keyData)
+        Else
+            Return MyBase.ProcessDialogKey(keyData)
+        End If
+    End Function
+
     Public Overrides Function GetClipboardContent() As DataObject
         '元のDataObjectを取得する
         Dim oldData As DataObject = MyBase.GetClipboardContent()
